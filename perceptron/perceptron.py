@@ -23,10 +23,12 @@ def perceptronStep(X, y, W, b, learn_rate = 0.01):
             # Do nothing
             continue
         elif (predict > 0 and y[i] < 1):
+            # positive prediction but negative label, move the line up closer
             W[0][0] -= learn_rate*X[i][0]
             W[1][0] -= learn_rate*X[i][1]
             b -= learn_rate
         elif (predict < 0 and y[i] > 0):
+            # negative prediction but positive label, move the line down closer
             W[0][0] += learn_rate*X[i][0]
             W[1][0] += learn_rate*X[i][1]
             b += learn_rate
